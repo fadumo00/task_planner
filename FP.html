@@ -13,47 +13,143 @@
 </head>
 
 <body>
+     <!--Jumbotron-->
+     <div class="jumbotron jumbotron-fluid bg-warning">
+          <div class="container">
+            <h1 class="display-4">Task Planner</h1>
+            <p class="lead">Welcome to my task planner</p>
+          </div>
+        </div>
+
+     <div class="container">
+     <h1 class="display-4">Assign Task</h1>
+     <form action="#nowhere">
+     
+          <div class="row">
+         <div class="form-group col-md-3">
+              <label for="Name">Name:</label>
+               <input type=text class="form-control" id="name" placeholder="Name of person creating task"
+               ></div>
+          <div class="form-group col-md-3">
+               <label for="AT">Assigned To:</label>
+               <input type=text class="form-control" id="AT" placeholder="Grace Shaffi"
+               ></div>
+          </div>
+     
+     
+          <div class="form-group col-md-6">
+                <label for="Description">Description:</label>
+                <input type=text class="form-control" id="description" placeholder="e.g Do score cards"
+                ></div>
+     
+          <div class="row">
+          <div class="form-group col-md-3">
+                <label for="Due">Due Date:</label>
+                <input type=text class="form-control" id="DD" placeholder="DD/MM/YYYY"
+                ></div>
+         <div class="form-group col-md-3">
+                <label for="Status">Status:</label>
+                <select class="form-control" name="Choose..." id="status">
+                     <option value="To Do">TO DO</option>
+                     <option value="In Progress">IN PROGRESS</option>
+                     <option value="Review">REVIEW</option>
+                     <option value="Done">DONE</option>
+                  </select>
+           ></div>
+          </div>
+                 <button type="submit" class="btn btn-info">Add Item</button>
+     </form>
+     </div>
+
+
+
+<h4 class="display-4 text-center">Current Tasks</h4>
+
 <div class="container">
-<h1 class="display-2">Task Planner</h1>
-<form action="#nowhere">
-
-     <div class="row">
-    <div class="form-group col-md-3">
-         <label for="Name">Name:</label>
-          <input type=text class="form-control" id="name" placeholder="Name of person creating task"
-          ></div>
-     <div class="form-group col-md-3">
-          <label for="AT">Assigned To:</label>
-          <input type=text class="form-control" id="AT" placeholder="Grace Shaffi"
-          ></div>
+<div class="row">
+        <!--FIRST CARD-->
+     <div class="col-4">    
+          <div class="card bg-warning">
+          <ul class="list-group list-group-flush">
+               <h6 class="card-title">Assigned To:</h6>
+               <li class="list-group-item">Elena</li>
+               <h6 class="card-title">Assigned By:</h6>
+               <li class="list-group-item">Fadumo</li>
+               <h6 class="card-title">Due Date:</h6>
+               <li class="list-group-item">11/11/2020</li>
+               <h6 class="card-title">Status:</h6>
+               <li class="list-group-item">In Progress</li>
+          </ul>
+          </div>
+     </div> 
+      <!--SECOND CARD-->
+     <div class="col-4">    
+          <div class="card bg-warning">
+          <ul class="list-group list-group-flush">
+          <h6 class="card-title">Assigned To:</h6>
+          <li class="list-group-item">Elena</li>
+          <h6 class="card-title">Assigned By:</h6>
+          <li class="list-group-item">Fadumo</li>
+          <h6 class="card-title">Due Date:</h6>
+          <li class="list-group-item">11/11/2020</li>
+          <h6 class="card-title">Status:</h6>
+          <li class="list-group-item">In Progress</li>
+          </ul>
      </div>
-
-
-     <div class="form-group col-md-6">
-           <label for="Description">Description:</label>
-           <input type=text class="form-control" id="description" placeholder="e.g Do score cards"
-           ></div>
-
-     <div class="row">
-     <div class="form-group col-md-3">
-           <label for="Due">Due Date:</label>
-           <input type=text class="form-control" id="DD" placeholder="DD/MM/YYYY"
-           ></div>
-    <div class="form-group col-md-3">
-           <label for="Status">Status:</label>
-           <select class="form-control" name="Choose..." id="status">
-                <option value="To Do">TO DO</option>
-                <option value="In Progress">IN PROGRESS</option>
-                <option value="Review">REVIEW</option>
-                <option value="Done">DONE</option>
-             </select>
-      ></div>
-     </div>
-            <button type="submit" class="btn btn-info">Add Item</button>
-</form>
+     </div> 
+     <!--THIRD CARD-->
+     <div class="col-4">    
+          <div class="card bg-warning">
+          <ul class="list-group list-group-flush">
+          <h6 class="card-title">Assigned To:</h6>
+          <li class="list-group-item">Elena</li>
+          <h6 class="card-title">Assigned By:</h6>
+          <li class="list-group-item">Fadumo</li>
+          <h6 class="card-title">Due Date:</h6>
+          <li class="list-group-item">11/11/2020</li>
+          <h6 class="card-title">Status:</h6>
+          <li class="list-group-item">In Progress</li>
+          </ul>
+     </div> 
 </div>
-
-
+</div>
+</div>
+<!--second row of cards-->
+<div class="container">
+     <div class="row">
+             <!--FIRST CARD-->
+          <div class="col-4">    
+               <div class="card bg-warning">
+               <ul class="list-group list-group-flush">
+                    <h6 class="card-title">Assigned To:</h6>
+                    <li class="list-group-item">Elena</li>
+                    <h6 class="card-title">Assigned By:</h6>
+                    <li class="list-group-item">Fadumo</li>
+                    <h6 class="card-title">Due Date:</h6>
+                    <li class="list-group-item">11/11/2020</li>
+                    <h6 class="card-title">Status:</h6>
+                    <li class="list-group-item">In Progress</li>
+               </ul>
+               </div>
+          </div> 
+           <!--SECOND CARD-->
+          <div class="col-4">    
+               <div class="card bg-warning">
+               <ul class="list-group list-group-flush">
+               <h6 class="card-title">Assigned To:</h6>
+               <li class="list-group-item">Elena</li>
+               <h6 class="card-title">Assigned By:</h6>
+               <li class="list-group-item">Fadumo</li>
+               <h6 class="card-title">Due Date:</h6>
+               <li class="list-group-item">11/11/2020</li>
+               <h6 class="card-title">Status:</h6>
+               <li class="list-group-item">In Progress</li>
+               </ul>
+          </div>
+          </div> 
+     </div>
+     </div>
+     
 
 
 
