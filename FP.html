@@ -24,29 +24,35 @@
      <div class="container">
      <h1 class="display-4">Assign Task</h1>
      <form action="#nowhere">
-     
+     <!--Name Input-->
           <div class="row">
          <div class="form-group col-md-3">
               <label for="Name">Name:</label>
-               <input type=text class="form-control" id="name" placeholder="Name of person creating task"
-               ></div>
+               <input type=text class="form-control" id="name" placeholder="Name of person creating task">
+               <p id="nameError"></p>
+               </div>
+     <!--Assigned To Input-->
           <div class="form-group col-md-3">
                <label for="AT">Assigned To:</label>
-               <input type=text class="form-control" id="AT" placeholder="Grace Shaffi"
-               ></div>
+               <input type=text class="form-control" id="assignedTo" placeholder="Grace Shaffi">
+               <p id="AssignedToError"></p>
+               </div>
           </div>
      
-     
+     <!--Description Input-->
           <div class="form-group col-md-6">
                 <label for="Description">Description:</label>
-                <input type=text class="form-control" id="description" placeholder="e.g Do score cards"
-                ></div>
-     
+                <input type=text class="form-control" id="description" placeholder="e.g Do score cards">
+                <p id="DescriptionError"></p>
+                </div>
+     <!--Due Date Input-->
           <div class="row">
           <div class="form-group col-md-3">
-                <label for="Due">Due Date:</label>
-                <input type=text class="form-control" id="DD" placeholder="DD/MM/YYYY"
-                ></div>
+                <label for="date">Due Date:</label>
+                <input type=date class="form-control" id="date" placeholder="DD/MM/YYYY">
+                <p id=DueDateError></p>
+                </div>
+     <!--Status Options-->
          <div class="form-group col-md-3">
                 <label for="Status">Status:</label>
                 <select class="form-control" name="Choose..." id="status">
@@ -55,13 +61,15 @@
                      <option value="Review">REVIEW</option>
                      <option value="Done">DONE</option>
                   </select>
+                  <p id=statusError></p>
            ></div>
+     <!--Submit Button-->
           </div>
-                 <button type="submit" class="btn btn-info">Add Item</button>
+                 <button type="button" class="btn btn-info" id="submitButton">Add Item</button>
      </form>
      </div>
 
-
+<!--Currnt Task Cards-->
 
 <h4 class="display-4 text-center">Current Tasks</h4>
 
@@ -167,7 +175,7 @@
 
 
 
-    <!--BOOTSTRAP LINKS-->
+    <!--BOOTSTRAP+JAVASCRIPT LINKS-->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <script src="FP.js"></script>
