@@ -18,13 +18,15 @@ document.querySelector('#submitButton').addEventListener('click', function() {
     console.log("is valid outcome", isValid);
     if(isValid == true){
         newTaskObject(name,assignedTo,description,date,status,inputTaskArray)
-
-
-        console.log(inputTaskArray);
+        let newTaskIndex = checkObject.allTasks.length-1
+        //test
+        console.log(checkObject.allTasks[newTaskIndex])
+        checkObject.addTask(checkObject.allTasks[newTaskIndex])
+       
         //add task to array
         //populate card. AddTask function call 
     }
-    
+    console.log(inputTaskArray);
 });
 
 // function checkInputs(){
@@ -72,7 +74,8 @@ function validateTaskForm(name,assignedTo,description,date,status) {
         alert("Please enter a date!")
     }
     //status validation
-    if(status.length > 8 && assignedTo.length != -1) {
+    
+    if (status != 'Choose...') {
         isValid= true;
     } else {
         isValid=false;
@@ -86,12 +89,11 @@ function validateTaskForm(name,assignedTo,description,date,status) {
 
 
 
-    
 
 
 
 function newTaskObject (name,assignedTo,description,date,status,inputTaskArray) {
-    inputTaskArray.push({
+    checkObject.allTasks.push({
         "name" : name,
         "assignedTo" : assignedTo,
         "description" : description,
@@ -99,7 +101,7 @@ function newTaskObject (name,assignedTo,description,date,status,inputTaskArray) 
         "status" : status,
         "ID" : `${inputTaskArray.length < 1 ? 1 : inputTaskArray.length+1}`
     })
- return newTaskObject;
+ return checkObject;
 }
 
 class TaskManager {
@@ -112,7 +114,29 @@ class TaskManager {
         console.log(this.allTasks);
     }
 
-    addTask(){
+    addTask(taskObject){
+//An object from the array needs to be passed in for it to work
+ 
+       let cardHTML =          `<div class="col-4" taskID="${taskObject.ID}>    
+                             <div class="card bg-warning">
+                                 <ul class="list-group list-group-flush">
+                                 <h6 class="card-title">Name:</h6>
+                                 <li class="list-group-item">${taskObject.name}</li>
+                                 <h6 class="card-title">Assigned To:</h6>
+                                 <li class="list-group-item">${taskObject.assignedTo}</li>
+                                 <h6 class="card-title">Description:</h6>
+                                 <li class="list-group-item">${taskObject.description}</li>
+                                 <h6 class="card-title">Due Date:</h6>
+                                 <li class="list-group-item">${taskObject.date}</li>
+                                 <h6 class="card-title">Status:</h6>
+                                 <li class="list-group-item">${taskObject.status}</li>
+                                 </ul>
+                             </div>
+                           </div> `
+
+                    let cardsHTMLrow = document.querySelector('#cardSection');
+                    cardsHTMLrow.innerHTML += cardHTML ;
+                    
 
     }
     deleteTasks() {
