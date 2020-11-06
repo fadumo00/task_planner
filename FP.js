@@ -8,15 +8,19 @@
 // })
 
 document.querySelector('#submitButton').addEventListener('click', function() {
-    const inputName= document.getElementById('name').value;
-    const assignedBy= document.getElementById('assignedTo').value;
+    const name= document.getElementById('name').value;
+    const assignedTo= document.getElementById('assignedTo').value;
     const description= document.getElementById('description').value;
     const date= document.getElementById('date').value;
     const status= document.getElementById('status').value;
     
-    let isValid = validateTasForm(inputName,assignedBy,description,date,status);
+    let isValid = validateTaskForm(name,assignedTo,description,date,status);
     console.log("is valid outcome", isValid);
     if(isValid == true){
+        newTaskObject(name,assignedTo,description,date,status,inputTaskArray)
+
+
+        console.log(inputTaskArray);
         //add task to array
         //populate card. AddTask function call 
     }
@@ -33,45 +37,95 @@ document.querySelector('#submitButton').addEventListener('click', function() {
 
 // }
 
-function validateTasForm(nameValue,assignedToValue,descriptionValue,dateValue,statusValue) {
+function validateTaskForm(name,assignedTo,description,date,status) {
     let isValid=false;
     //name validation
-    if(nameValue.length > 8 && nameValue.length != -1) {
+    if(name.length > 8 && name.length != -1) {
         isValid=true;
     } else {
         isvalid=false;
         document.getElementById=("nameError").innerHTML ="Text needs to be more than 8 characters!"
-        alert("Not enough characters")
+        alert("Not enough characters!")
     }
     //assigned to validation
-    if(assignedToValue.length > 8 && assignedToValue.length != -1) {
+    if(assignedTo.length > 8 && assignedTo.length != -1) {
         isValid= true;
     } else {
         isValid=false;
         document.getElementById=("assignedToError").innerHTML = "Text needs to be more than 8 characters!"
+        alert("Not enough characters!")
     }
     //description validation
-    if(assignedToValue.length > 20 && assignedToValue.length != -1) {
+    if(description.length > 20 && assignedTo.length != -1) {
         isValid= true;
     } else {
         isValid=false;
         document.getElementById=("descriptionError").innerHTML = "Text needs to be more than 20 characters!"
+        alert("Not enough characters!")
     }
     //date validation
-    if( assignedToValue.length != -1) {
+    if( date.length != -1) {
         isValid= true;
     } else {
         isValid=false;
         document.getElementById=("dateError").innerHTML = "please enter date!"
+        alert("Please enter a date!")
     }
     //status validation
-    if(assignedToValue.length > 8 && assignedToValue.length != -1) {
+    if(status.length > 8 && assignedTo.length != -1) {
         isValid= true;
     } else {
         isValid=false;
-        document.getElementById=("statusError").innerHTML = "Text needs to be more than 8 characters!"
+        document.getElementById=("statusError").innerHTML = "You must select a status"
+        alert("Select a status!")
     }
 
     return isValid;
 
 }
+
+
+
+    
+
+
+
+function newTaskObject (name,assignedTo,description,date,status,inputTaskArray) {
+    inputTaskArray.push({
+        "name" : name,
+        "assignedTo" : assignedTo,
+        "description" : description,
+        "date" : date,
+        "status" : status,
+        "ID" : `${inputTaskArray.length < 1 ? 1 : inputTaskArray.length+1}`
+    })
+ return newTaskObject;
+}
+
+class TaskManager {
+    constructor(array,name) {
+        this.allTasks = array;
+        this.name = name;
+        
+    }
+    getAllTasks() {
+        console.log(this.allTasks);
+    }
+
+    addTask(){
+
+    }
+    deleteTasks() {
+
+    }
+
+}
+
+
+//creating an empty array so that we can input new tasks
+
+let inputTaskArray = [];
+
+//creating task manager object
+let checkObject = new TaskManager(inputTaskArray,"taskNameExample");
+console.log(checkObject.name);
