@@ -21,39 +21,46 @@
           </div>
         </div>
 
-     <div class="container">
+     <div class="container" id="mainForm">
      <h1 class="display-4">Assign Task</h1>
+     <div class="row">
+     <div class="col-md-18" id="form">
      <form action="#nowhere">
      <!--Name Input-->
           <div class="row">
-         <div class="form-group col-md-3">
+         <div class="form-group col-md-6">
               <label for="Name">Name:</label>
                <input type=text class="form-control" id="name" placeholder="Name of person creating task">
                <p id="nameError"></p>
                </div>
      <!--Assigned To Input-->
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-6">
                <label for="AT">Assigned To:</label>
                <input type=text class="form-control" id="assignedTo" placeholder="Grace Shaffi">
                <p id="AssignedToError"></p>
                </div>
+               <!--list on the right hand side-->
+              
+
           </div>
      
      <!--Description Input-->
-          <div class="form-group col-md-6">
+          <div class="row">
+          <div class="form-group col-md-12">
                 <label for="Description">Description:</label>
                 <input type=text class="form-control" id="description" placeholder="e.g Do score cards">
                 <p id="DescriptionError"></p>
                 </div>
+           </div>
      <!--Due Date Input-->
           <div class="row">
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-6">
                 <label for="date">Due Date:</label>
                 <input type=date class="form-control" id="date" placeholder="DD/MM/YYYY">
                 <p id=DueDateError></p>
                 </div>
      <!--Status Options-->
-         <div class="form-group col-md-3">
+         <div class="form-group col-md-6">
                 <label for="Status">Status:</label>
                 <select class="form-control" name="Choose..." id="status">
                      <option selected>Choose...</option>
@@ -63,13 +70,32 @@
                      <option value="Done">DONE</option>
                   </select>
                   <p id=statusError></p>
-           ></div>
+           </div>
      <!--Submit Button-->
           </div>
                  <button type="button" class="btn btn-info" id="submitButton">Add Item</button>
      </form>
-     </div>
+</div>
 
+<!-- <div class="col-md-3" id="summaryTask">
+     <div class="col-md-6" > -->
+
+          <div class="col-md-3" id="summaryTask">
+              <!-- this is where tasks will pop-->
+            </div>
+      </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+     
 <!--Currnt Task Cards-->
 
 <h4 class="display-4 text-center">Current Tasks</h4>

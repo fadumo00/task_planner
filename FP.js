@@ -118,7 +118,7 @@ class TaskManager {
 //An object from the array needs to be passed in for it to work
  
        let cardHTML =          `<div class="col-4" taskID="${taskObject.ID}>    
-                             <div class="card bg-warning">
+                             <div class="card">
                                  <ul class="list-group list-group-flush">
                                  <h6 class="card-title">Name:</h6>
                                  <li class="list-group-item">${taskObject.name}</li>
@@ -136,6 +136,17 @@ class TaskManager {
 
                     let cardsHTMLrow = document.querySelector('#cardSection');
                     cardsHTMLrow.innerHTML += cardHTML ;
+
+                    let listHTML = ` <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" taskID="${taskObject.ID}">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Assigned To: ${taskObject.assignedTo} </h5>
+                            <small>Due Date: ${taskObject.date} </small>
+                        </div>
+                        <small>Status: ${taskObject.status}</small>
+                        </a>`
+
+        let listHTMLrow = document.querySelector('#summaryTask');
+        listHTMLrow.innerHTML += listHTML;
                     
 
     }

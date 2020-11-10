@@ -3,3 +3,11 @@
     margin-top:15px;
 
 }
+
+#summaryTask {
+    margin-left: 100px
+}
+
+.card li {
+    background-color: blueviolet;
+}
