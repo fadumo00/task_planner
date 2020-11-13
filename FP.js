@@ -1,5 +1,3 @@
-
-
 // //prevents form from being submitted
 // document.submitButton.addEventListener('submit', (e) => {
 //     e.preventDefault();
@@ -38,6 +36,36 @@ document.querySelector('#submitButton').addEventListener('click', function() {
 //     const statusValue= status.value;
 
 // }
+
+//deleting cards
+
+document.addEventListener('click', function(event){
+    const isButton = (event.target.nodeName == 'BUTTON');
+    if(isButton) {
+        const element = event.target;
+        console.log(element);
+        let job = element.attributes.job.value;
+        if (job == "deleteTask") {
+          checkObject.deleteTask(element);
+        }
+    }  
+  
+  });
+
+
+
+//deleting cards
+
+// document.addEventListener('click', function(event){
+//     const element = event.target;
+//     checkObject.deleteTasks(element);
+    
+
+// })
+
+
+
+
 
 function validateTaskForm(name,assignedTo,description,date,status) {
     let isValid=false;
@@ -117,9 +145,9 @@ class TaskManager {
     addTask(taskObject){
 //An object from the array needs to be passed in for it to work
  
-       let cardHTML =          `<div class="col-4" taskID="${taskObject.ID}>    
+       let cardHTML =          `<div class="col-4" taskID="${taskObject.ID}">    
                              <div class="card">
-                                 <ul class="list-group list-group-flush">
+                                 <ul class="list-group list-group-flush bg-warning">
                                  <h6 class="card-title">Name:</h6>
                                  <li class="list-group-item">${taskObject.name}</li>
                                  <h6 class="card-title">Assigned To:</h6>
@@ -131,13 +159,14 @@ class TaskManager {
                                  <h6 class="card-title">Status:</h6>
                                  <li class="list-group-item">${taskObject.status}</li>
                                  </ul>
+                                 <button job="deleteTask" type="button" class="btn btn-warning" deleteID="${taskObject.ID}">Delete</button>
                              </div>
                            </div> `
 
                     let cardsHTMLrow = document.querySelector('#cardSection');
                     cardsHTMLrow.innerHTML += cardHTML ;
 
-                    let listHTML = ` <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" taskID="${taskObject.ID}">
+                    let listHTML = ` <a href="#" class="list-group-item list-group-item-action flex-column align-items-start bg-warning" taskID="${taskObject.ID}">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">Assigned To: ${taskObject.assignedTo} </h5>
                             <small>Due Date: ${taskObject.date} </small>
@@ -150,11 +179,23 @@ class TaskManager {
                     
 
     }
-    deleteTasks() {
+    deleteTask(element) {
+
+        let thistaskID = element.attributes.deleteID.value;
+        for(let i=0; i < this.allTasks.length; i++){
+            if(this.allTasks[i].ID == thistaskID){
+                this.allTasks.splice(i,1)
+            }
+        }
+    
+        element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode)
+    
+    
+        }
 
     }
 
-}
+
 
 
 //creating an empty array so that we can input new tasks
@@ -164,3 +205,4 @@ let inputTaskArray = [];
 //creating task manager object
 let checkObject = new TaskManager(inputTaskArray,"taskNameExample");
 console.log(checkObject.name);
+
