@@ -15,7 +15,7 @@ document.querySelector('#submitButton').addEventListener('click', function() {
     let isValid = validateTaskForm(name,assignedTo,description,date,status);
     console.log("is valid outcome", isValid);
     if(isValid == true){
-        newTaskObject(name,assignedTo,description,date,status,inputTaskArray)
+        newTaskObject(name,assignedTo,description,date,status, checkObject.allTasks)
         let newTaskIndex = checkObject.allTasks.length-1
         //test
         console.log(checkObject.allTasks[newTaskIndex])
@@ -129,12 +129,14 @@ function newTaskObject (name,assignedTo,description,date,status,inputTaskArray) 
         "status" : status,
         "ID" : `${inputTaskArray.length < 1 ? 1 : inputTaskArray.length+1}`
     })
- return checkObject;
+
+    localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks.push))
+    return checkObject;
 }
 
 class TaskManager {
-    constructor(array,name) {
-        this.allTasks = array;
+    constructor(name) {
+        this.allTasks = [];
         this.name = name;
         
     }
@@ -180,29 +182,50 @@ class TaskManager {
 
     }
     deleteTask(element) {
-
+    //removes item from the array
         let thistaskID = element.attributes.deleteID.value;
         for(let i=0; i < this.allTasks.length; i++){
             if(this.allTasks[i].ID == thistaskID){
                 this.allTasks.splice(i,1)
+                localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks.push))
             }
         }
-    
+    //removes card
         element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode)
-    
+    //removes small card
+
+    let elementsA = document.querySelectorAll('a');
+    for(let i=0; i < elementsA.length; i++) {
+        element = elementsA[i];
+        if(element.attributes.taskID.value == thistaskID) {
+            element.parentNode.removeChild(element);
+        }
+    }
     
         }
 
     }
 
+    //creating task manager object
+let checkObject = new TaskManager("taskNameExample");
 
 
+//this gets the data back from local storage
+let dataReturned = localStorage.getItem("taskArray");
 
-//creating an empty array so that we can input new tasks
+if(dataReturned){
+    checkObject.allTasks = JSON.parse(dataReturned);
+    populatePage(checkObject.allTasks)
+} else {
+    checkObject.taskArray = [];
+}
 
-let inputTaskArray = [];
 
-//creating task manager object
-let checkObject = new TaskManager(inputTaskArray,"taskNameExample");
-console.log(checkObject.name);
+function populatePage(array){
+    for(let i=0; i < array.length; i++){
+        checkObject.addTask(array[i]);
+    }
+}
+
+
 
