@@ -1,9 +1,4 @@
-// //prevents form from being submitted
-// document.submitButton.addEventListener('submit', (e) => {
-//     e.preventDefault();
-// //calls function that checks all the inputs
-//     checkInputs();
-// })
+
 
 document.querySelector('#submitButton').addEventListener('click', function() {
     const name= document.getElementById('name').value;
@@ -12,9 +7,9 @@ document.querySelector('#submitButton').addEventListener('click', function() {
     const date= document.getElementById('date').value;
     const status= document.getElementById('status').value;
     
-    let isValid = validateTaskForm(name,assignedTo,description,date,status);
-    console.log("is valid outcome", isValid);
-    if(isValid == true){
+    let isAllValid = validateTaskForm(name,assignedTo,description,date,status);
+    console.log("is valid outcome", isAllValid);
+    if(isAllValid == true){
         newTaskObject(name,assignedTo,description,date,status, checkObject.allTasks)
         let newTaskIndex = checkObject.allTasks.length-1
         //test
@@ -24,7 +19,7 @@ document.querySelector('#submitButton').addEventListener('click', function() {
         //add task to array
         //populate card. AddTask function call 
     }
-    console.log(inputTaskArray);
+    
 });
 
 // function checkInputs(){
@@ -70,28 +65,28 @@ document.addEventListener('click', function(event){
 function validateTaskForm(name,assignedTo,description,date,status) {
     let isValid=false;
     //name validation
-    if(name.length > 8 && name.length != -1) {
+    if(name.length > 3 && name.length != -1) {
         isValid=true;
     } else {
         isvalid=false;
         document.getElementById=("nameError").innerHTML ="Text needs to be more than 8 characters!"
-        alert("Not enough characters!")
+        alert("Not enough characters for name!")
     }
     //assigned to validation
-    if(assignedTo.length > 8 && assignedTo.length != -1) {
+    if(assignedTo.length > 3 && assignedTo.length != -1) {
         isValid= true;
     } else {
         isValid=false;
         document.getElementById=("assignedToError").innerHTML = "Text needs to be more than 8 characters!"
-        alert("Not enough characters!")
+        alert("Not enough characters to assigned!")
     }
     //description validation
-    if(description.length > 20 && assignedTo.length != -1) {
+    if(description.length > 10 && assignedTo.length != -1) {
         isValid= true;
     } else {
         isValid=false;
         document.getElementById=("descriptionError").innerHTML = "Text needs to be more than 20 characters!"
-        alert("Not enough characters!")
+        alert("Not enough characters for description!")
     }
     //date validation
     if( date.length != -1) {
@@ -113,6 +108,17 @@ function validateTaskForm(name,assignedTo,description,date,status) {
 
     return isValid;
 
+    //logical error here, as long as at least one validation check it true it will 
+    //still add the item. 
+}
+
+function validateAllTaskForm(isValid) {
+    let isAllValid= false
+    if((name.length >= 3) && (assignedTo.length >= 3) && (description.length >=10) && (date) && (status != 'Choose...')){
+        isAllValid =true;
+    }
+
+    return isAllValid; 
 }
 
 
@@ -130,7 +136,7 @@ function newTaskObject (name,assignedTo,description,date,status,inputTaskArray) 
         "ID" : `${inputTaskArray.length < 1 ? 1 : inputTaskArray.length+1}`
     })
 
-    localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks.push))
+    localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks))
     return checkObject;
 }
 
@@ -187,7 +193,7 @@ class TaskManager {
         for(let i=0; i < this.allTasks.length; i++){
             if(this.allTasks[i].ID == thistaskID){
                 this.allTasks.splice(i,1)
-                localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks.push))
+                localStorage.setItem("taskArray", JSON.stringify(checkObject.allTasks))
             }
         }
     //removes card

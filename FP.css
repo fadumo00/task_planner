@@ -9,5 +9,18 @@
 }
 
 .card li {
-    background-color: blueviolet;
+    background-color: indianred;
+}
+
+.tittle {
+    font-family: cursive;
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.display-4 {
+    font-family: cursive;
+    color: lightcoral;
 }
